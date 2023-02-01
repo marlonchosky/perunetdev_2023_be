@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33122.133
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuscadorDeStreamings.WebApi", "BuscadorDeStreamings.WebApi\BuscadorDeStreamings.WebApi.csproj", "{C6FD36F3-8069-4A58-AD19-4B247148CE93}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{46EFFE65-1A58-4868-8816-215202F5E1FF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C6FD36F3-8069-4A58-AD19-4B247148CE93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6FD36F3-8069-4A58-AD19-4B247148CE93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6FD36F3-8069-4A58-AD19-4B247148CE93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6FD36F3-8069-4A58-AD19-4B247148CE93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46EFFE65-1A58-4868-8816-215202F5E1FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46EFFE65-1A58-4868-8816-215202F5E1FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46EFFE65-1A58-4868-8816-215202F5E1FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46EFFE65-1A58-4868-8816-215202F5E1FF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EB16A593-281B-445D-B58D-69BD85F9702A}
+	EndGlobalSection
+EndGlobal
