@@ -14,17 +14,6 @@ namespace ConsoleApp1 {
             await BuscarProveedoresPorId();
         }
 
-        class Abc {
-            public int NombreDeLaPelicula { get; set; }
-            public int UrlDeLaImagen { get; set; }
-            public int Disponibilidad { get; set; }
-
-            class Dispo {
-                public int NombreProveedor { get; set; }
-                public int Tipo { get; set; } // Comprar,alquilar, 
-            }
-        }
-
         private static void BuscarPeliculaPorTitulo() {
             var client = new TMDbClient("9b012b3d9b77f80761c55261d9a43379");
             var titulo = "Shrek";
