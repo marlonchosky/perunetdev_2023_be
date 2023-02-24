@@ -18,8 +18,8 @@ namespace BuscadorDeStreamings.WebApi.Services {
             var builder = new PeliculaBuilder();
             builder
                 .AgregarDondeComprar(MapearCompradores(datosDePeliculaParaPais))
-                .AgregarDondeVerEnStreaming(MapearStreaming(datosDePeliculaParaPais));
-
+                .AgregarDondeVerEnStreaming(MapearStreaming(datosDePeliculaParaPais))
+                .AgregarParametrosGenerales(movie);
             return builder.Build();
         }
 
