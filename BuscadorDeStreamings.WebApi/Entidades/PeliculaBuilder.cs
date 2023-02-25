@@ -1,15 +1,16 @@
-﻿using TMDbLib.Objects.Movies;
+﻿using BuscadorDeStreamings.WebApi.Entidades;
+using TMDbLib.Objects.Movies;
 
 namespace BuscadorDeStreamings.WebApi.Entidades {
     public class PeliculaBuilder {
-        private IReadOnlyList<string> _compradores = new List<string>();
-        private IReadOnlyList<string> _proveedoresDeStreaming = new List<string>();
+        private IReadOnlyList<Comprador> _compradores = new List<Comprador>();
+        private IReadOnlyList<ProveedoresDeStreaming> _proveedoresDeStreaming = new List<ProveedoresDeStreaming>();
         private Pelicula.DatosGeneralesClass _datosGenerales = Pelicula.DatosGeneralesClass.SinEspecificar();
 
         public Pelicula Build() {
             var pelicula = new Pelicula();
-            _compradores.ToList().ForEach(pelicula.AgregarComprador);
-            _proveedoresDeStreaming.ToList().ForEach(pelicula.AgregarProveedorDeStreaming);
+            _compradores.ToList().ForEach(comprador => pelicula.AgregarComprador(comprador.Nombre, comprador.LogoUrl));
+            _proveedoresDeStreaming.ToList().ForEach(proveedor => pelicula.AgregarProveedorDeStreaming(proveedor.Nombre, proveedor.LogoUrl));
 
             if (!_datosGenerales.EsSinEspecificar())
                 pelicula.AgregarDatosGenerales(this._datosGenerales);
@@ -17,12 +18,12 @@ namespace BuscadorDeStreamings.WebApi.Entidades {
             return pelicula;
         }
 
-        internal PeliculaBuilder AgregarDondeComprar(IReadOnlyList<string> compradores) {
+        internal PeliculaBuilder AgregarDondeComprar(IReadOnlyList<Comprador> compradores) {
             _compradores = compradores;
             return this;
         }
 
-        internal PeliculaBuilder AgregarDondeVerEnStreaming(IReadOnlyList<string> proveedoresDeStreaming) {
+        internal PeliculaBuilder AgregarDondeVerEnStreaming(IReadOnlyList<ProveedoresDeStreaming> proveedoresDeStreaming) {
             _proveedoresDeStreaming = proveedoresDeStreaming;
             return this;
         }
@@ -35,6 +36,8 @@ namespace BuscadorDeStreamings.WebApi.Entidades {
                 IdiomaOriginal = movie.OriginalLanguage,
                 TagLine = movie.Tagline,
                 RutaDelPoster = movie.PosterPath,
+                RutaDelPosterDeFondo = movie.BackdropPath,
+                FechaDeEstreno = movie.ReleaseDate?.ToString("yyyy-MM-dd")
             };
     }
 }

@@ -8,6 +8,14 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddCors(options => {
+    options.AddDefaultPolicy(builder => {
+        builder.AllowAnyOrigin();
+        builder.AllowAnyHeader();
+        builder.AllowAnyMethod();
+    });
+});
+
 builder.Services.AddSingleton<DatosGeneralesDePeliculaService>();
 builder.Services.AddSingleton<DatosDePeliculaService>();
 
@@ -37,15 +45,7 @@ app.MapGet("/VerDetalleDePelicula", async ([FromServices] DatosDePeliculaService
 .WithName("VerDetalleDePelicula")
 .WithOpenApi();
 
+
+app.UseCors();
+
 app.Run();
-
-internal class Abc {
-    public int NombreDeLaPelicula { get; set; }
-    public int UrlDeLaImagen { get; set; }
-    public int Disponibilidad { get; set; }
-
-    private class Dispo {
-        public int NombreProveedor { get; set; }
-        public int Tipo { get; set; } // Comprar,alquilar, 
-    }
-}

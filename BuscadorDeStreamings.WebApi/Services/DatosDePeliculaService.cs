@@ -15,6 +15,7 @@ namespace BuscadorDeStreamings.WebApi.Services {
                 return null;
 
             var datosDePeliculaParaPais = movie.WatchProviders.Results.Single(p => p.Key == codigoDelPais).Value;
+
             var builder = new PeliculaBuilder();
             builder
                 .AgregarDondeComprar(MapearCompradores(datosDePeliculaParaPais))
@@ -23,7 +24,10 @@ namespace BuscadorDeStreamings.WebApi.Services {
             return builder.Build();
         }
 
-        private IReadOnlyList<string> MapearCompradores(WatchProviders providers) => providers.Buy.Select(m => m.ProviderName).ToList();
-        private IReadOnlyList<string> MapearStreaming(WatchProviders providers) => providers.FlatRate.Select(m => m.ProviderName).ToList();
+        private IReadOnlyList<Comprador> MapearCompradores(WatchProviders providers) => providers.Buy.Select(m => new Comprador { Nombre = m.ProviderName, LogoUrl = m.LogoPath }).ToList();
+        private IReadOnlyList<ProveedoresDeStreaming> MapearStreaming(WatchProviders providers) => providers.FlatRate.Select(m => new ProveedoresDeStreaming {
+            Nombre = m.ProviderName,
+            LogoUrl = m.LogoPath
+        }).ToList();
     }
 }

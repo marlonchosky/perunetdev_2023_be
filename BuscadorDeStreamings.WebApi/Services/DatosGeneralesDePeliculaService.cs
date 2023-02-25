@@ -13,8 +13,9 @@ namespace BuscadorDeStreamings.WebApi.Services {
             var resultadosDeApi = await cliente.SearchMovieAsync(filtro.Titulo);
 
             var resultado = new PeliculasQueCumplenConFiltro(filtro);
+
             resultadosDeApi.Results
-                .Select(r => new DetalleGeneralDePelicula(r.Id, r.OriginalTitle))
+                .Select(r => new DetalleGeneralDePelicula(r.Id, r.OriginalTitle, r.PosterPath, r.BackdropPath, r.ReleaseDate?.ToString("yyyy-MM-dd"), r.Overview))
                 .ToList()
                 .ForEach(resultado.AgregarPelicula);
 
